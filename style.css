@@ -1,0 +1,406 @@
+/* ===== Global ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #a8e063, #61a740);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    gap: 40px;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+/* ===== Title Section ===== */
+.score {
+    width: 600px
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 15px 25px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+/* ===== Scoreboard ===== */
+.scoreboard {
+    display: flex;
+    gap: 20px;
+}
+
+.score-card {
+    background: white;
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.score-card span {
+    display: block;
+    font-size: 24px;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* ===== Choices Section ===== */
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 60px;
+    position: relative;
+}
+
+/* Connecting Lines */
+
+.choices .choice::after {
+    content: url('./assets/Line\ 1.png');
+    position: absolute;
+    z-index: -2;
+}
+
+.rock::after {
+    transform: rotate(120deg) translate(90px, 0px)
+}
+
+.paper::after {
+    transform: rotate(60deg) translate(-90px, -25px)
+}
+
+.scissors::after {
+    transform: rotate(0deg) translate(100px, 0px)
+}
+
+/* ===== Choice Buttons ===== */
+.choice {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border: 10px solid transparent;
+
+}
+
+.rock {
+    border-color: #007bff;
+    position: relative;
+    left: 100px;
+}
+
+.paper {
+    border-color: #ff9800;
+    position: relative;
+    top: 180px;
+    left: 12px;
+}
+
+.scissors {
+    border-color: #9c27b0;
+}
+
+/* ===== Picked Background Animation ===== */
+.picked {
+    position: relative;
+}
+
+.picked::after {
+    position: absolute;
+    top: 260px;
+    left: 410px;
+    width: 40%;
+    height: 40%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0;
+    animation: fadeBg 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeBg {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ===== Winner Screen and show choices ===== */
+
+.choiceContainer {
+
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: baseline;
+    gap: 30px;
+
+}
+
+.choice-mode {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 40px;
+    text-align: center;
+    align-content: baseline;
+}
+
+.choiceContainer .picked {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 25px;
+    text-transform: uppercase;
+    color: whitesmoke;
+}
+
+
+.bg-blue {
+    border-color: #007bff;
+}
+
+.infoDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.infoDiv h1 {
+    color: white;
+    text-transform: uppercase;
+    width: 200px;
+}
+
+.play-again-btn {
+    width: 120px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.user,
+.pc {
+    display: block;
+    padding: 10px;
+
+    z-index: -1;
+}
+
+.winnerBg {
+    position: relative;
+    z-index: 1;
+}
+
+.winnerBg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/Ellipse.png');
+    background-repeat: no-repeat;
+    background-size: 130%;
+    background-position: -22px -22px;
+    z-index: -1;
+    /* place it behind the text */
+    animation: zoomInOut 4s infinite alternate ease-in-out;
+}
+
+/* ===== Rules Section ===== */
+.rules {
+    width: 97%;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    position: fixed;
+    bottom: 20px;
+    z-index: 10;
+}
+
+.rules-btn {
+    padding: 8px 18px;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rules-btn:hover {
+    background: white;
+    color: #2e7d32;
+    transition: 0.3s;
+}
+
+/* ===== Rules Modal ===== */
+.rules-box {
+    background: #004d00;
+    color: white;
+    padding: 20px;
+    width: 280px;
+    border-radius: 12px;
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: ruleBox 0.3s ease;
+}
+
+@keyframes ruleBox {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rules-box h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.rules-box ul {
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Only background animation */
+@keyframes zoomInOut {
+    0% {
+        transform: scale(2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* hurray screen after winning */
+.hurrayScreen {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 119px;
+    position: relative;
+}
+
+.hurrayScreen::after {
+    content: url('./assets/Group\ 5.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 15px;
+    animation: startsFadeInout 1s infinite alternate ease-in-out;
+}
+
+@keyframes startsFadeInout {
+    0% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.hurrayScreen .G-msg {
+    text-transform: uppercase;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.hurrayScreen .G-msg h1 {
+    font-size: 70px;
+}
+
+.hurrayScreen button {
+    padding: 8px 10px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* ===== Responsive Design ===== */
+@media (max-width: 600px) {
+    .title {
+        width: 85%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .choice {
+        width: 90px;
+        height: 90px;
+        font-size: 30px;
+    }
+
+    .rules-box {
+        width: 220px;
+        font-size: 13px;
+    }
+
+    .picked.active::after {
+        top: 200px;
+        left: 200px;
+        width: 60%;
+        height: 60%;
+    }
+}

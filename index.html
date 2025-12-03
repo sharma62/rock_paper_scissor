@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body">
+    <!-- score Card -->
+    <div class="score ">
+        <div class="title">
+            <div style="text-align: left; color: whitesmoke; font-size: larger;">ROCK <br> PAPER <br> SCISSORS</div>
+            <div class="scoreboard">
+                <div class="score-card">COMPUTER<br>SCORE <span id="compScore">0</span></div>
+                <div class="score-card">YOUR<br>SCORE <span id="PlyerScore">0</span></div>
+            </div>
+        </div>
+    </div>
+    <!-- choices -->
+    <div class="choicer ">
+        <div class="choices">
+            <div class="choice rock " data-choice="rock">✊</div>
+            <div class="choice paper" data-choice="paper">✋</div>
+            <div class="choice scissors" data-choice="scissors">✌️</div>
+        </div>
+    </div>
+    <!-- get result -->
+    <div class="result d-none">
+        <div class="choiceContainer d-none ">
+            <div class="picked">
+                <div>you picked</div>
+                <div>pc picked</div>
+            </div>
+            <div class="choice-mode">
+                <div class="user ">
+                    <div class="choice userChoice bg-blue">✊</div>
+                </div>
+                <div class="infoDiv">
+                    <h1 class="status">You win <br>Against pc</h1>
+                    <button class="play-again-btn">Play Again</button>
+                </div>
+                <div class="pc">
+                    <div class="choice pcChoice scissors">✊</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- congratulation msg -->
+    <div class="congratulation d-none">
+        <div class="hurrayScreen">
+            <div class="trophy"><img src="./assets/Vector.png" alt=""></div>
+            <div class="G-msg">
+                <h1>Hurray!</h1>
+                <h2>you won the game</h2>
+            </div>
+            <div><button class="play-again-btn resetBtn">Play Again</button></div>
+
+        </div>
+    </div>
+
+
+    <!-- Rules Modal -->
+    <div class="rules-box" id="rulesBox">
+        <span class="close-btn" onclick="toggleRules()">✖</span>
+        <h3>Game Rules</h3>
+        <ul>
+            <li>Rock beats Scissors</li>
+            <li>Scissors beats Paper</li>
+            <li>Paper beats Rock</li>
+            <li>Same choice = Draw</li>
+        </ul>
+    </div>
+    <div class="rules">
+        <button class="rules-btn" onclick="toggleRules()">RULES</button>
+        <button class="rules-btn d-none" id="next" onclick="handleNext()">NEXT</button>
+    </div>
+
+    <script>
+        function toggleRules() {
+            const box = document.getElementById("rulesBox");
+            box.style.display = box.style.display === "block" ? "none" : "block";
+        }
+    </script>
+    <script type="module" src="script_3.js"></script>
+</body>
+
+</html>
