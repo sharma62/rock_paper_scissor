@@ -22,9 +22,9 @@
     <!-- choices -->
     <div class="choicer ">
         <div class="choices">
-            <div class="choice rock " data-choice="rock">✊</div>
-            <div class="choice paper" data-choice="paper">✋</div>
-            <div class="choice scissors" data-choice="scissors">✌️</div>
+            <div class="choice rock " data-choice="rock"><img src="./assets/Rock.png" alt=""></div>
+            <div class="choice paper" data-choice="paper"><img src="./assets/peper.png" alt=""></div>
+            <div class="choice scissors" data-choice="scissors"><img src="./assets/sciessor.png" alt=""></div>
         </div>
     </div>
     <!-- get result -->
@@ -36,14 +36,14 @@
             </div>
             <div class="choice-mode">
                 <div class="user ">
-                    <div class="choice userChoice bg-blue">✊</div>
+                    <div class="choice userChoice bg-blue"><img src="" alt="" id="choiceImage"></div>
                 </div>
                 <div class="infoDiv">
                     <h1 class="status">You win <br>Against pc</h1>
                     <button class="play-again-btn">Play Again</button>
                 </div>
                 <div class="pc">
-                    <div class="choice pcChoice scissors">✊</div>
+                    <div class="choice pcChoice scissors"><img src="" alt="" id="choiceImage"></div>
                 </div>
             </div>
         </div>
@@ -66,13 +66,24 @@
 
     <!-- Rules Modal -->
     <div class="rules-box" id="rulesBox">
-        <span class="close-btn" onclick="toggleRules()">✖</span>
+        <!-- <span >✖</span> -->
+        <div class="close-btn" onclick="toggleRules()">
+            <div class="close-bg">
+               <div  class="bg-x">
+                 <img src="./assets/x_bg.png" alt="">
+                 <div class="x">
+                     <img src="./assets/X.png" alt="">
+                 </div>
+               </div>
+            </div>
+        </div>
         <h3>Game Rules</h3>
         <ul>
-            <li>Rock beats Scissors</li>
-            <li>Scissors beats Paper</li>
-            <li>Paper beats Rock</li>
-            <li>Same choice = Draw</li>
+            <li> Rock beats scissors, scissors beat paper, and paper beats rock.</li>
+            <li>Agree ahead of time whether you’ll count off “rock, paper, scissors, shoot” or just “rock, paper,
+                scissors.”</li>
+            <li>Use rock, paper, scissors to settle minor decisions or simply play to pass the time</li>
+            <li>If both players lay down the same hand, each player lays down another hand</li>
         </ul>
     </div>
     <div class="rules">
