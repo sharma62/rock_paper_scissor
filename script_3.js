@@ -11,7 +11,7 @@ computerEl.textContent = compScore;
 
 const winsAgainst = {
   rock: "scissors",
-  paper: "rock",
+  paper: "Rock",
   scissors: "paper",
 };
 
@@ -144,3 +144,4 @@ function getPlayerChoice() {
 }
 
 getPlayerChoice();
+
