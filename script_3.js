@@ -43,7 +43,7 @@ function updateScores(winner) {
 // Choice images
 function getChoiceImage(choice) {
   const map = {
-    rock: "./assets/rock.png",
+    rock: "./assets/Rock.png",
     paper: "./assets/peper.png",
     scissors: "./assets/sciessor.png",
   };
@@ -144,4 +144,5 @@ function getPlayerChoice() {
 }
 
 getPlayerChoice();
+
 
